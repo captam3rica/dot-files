@@ -1,2 +1,1 @@
-# dot-files
-My dot files
+# ~ dotfiles
