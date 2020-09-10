@@ -1,0 +1,109 @@
+"*":
+  "atom-beautify":
+    executables:
+      black: {}
+    general:
+      beautifyEntireFileOnSave: false
+    markdown:
+      default_beautifier: "Remark"
+    python:
+      beautify_on_save: true
+      default_beautifier: "black"
+  "atom-ide-ui":
+    "atom-ide-code-format":
+      formatOnSave: true
+  "autocomplete-python":
+    useKite: true
+    useSnippets: "all"
+  core:
+    disabledPackages: [
+      "markdown-preview"
+      "language-vb"
+      "seti-icons"
+      "vim-mode-plus"
+      "language-gfm"
+      "atom-ide-ui"
+      "ide-python"
+      "ide-json"
+      "linter-pylint"
+    ]
+    telemetryConsent: "no"
+    themes: [
+      "dracula-ui"
+      "dracula-syntax"
+    ]
+    useTreeSitterParsers: false
+  editor:
+    autoIndentOnPaste: false
+    confirmCheckoutHeadRevision: false
+    fontFamily: "Hack, Fira Code"
+    fontSize: 10
+    preferredLineLength: 88
+    showIndentGuide: true
+    softWrap: true
+    softWrapAtPreferredLineLength: true
+    tabLength: 4
+  "exception-reporting":
+    userId: "9b032642-62f5-40cc-b98f-0998e3a3e3b8"
+  "highlight-line":
+    enableSelectionBorder: true
+    hideHighlightOnSelect: true
+  "ide-python":
+    pylsPlugins:
+      autopep8:
+        enabled: false
+      jedi_completion:
+        enabled: false
+      pycodestyle:
+        enabled: false
+      pyflakes:
+        enabled: false
+      pylint:
+        enabled: true
+  kite:
+    showWelcomeNotificationOnStartup: false
+  "linter-flake8":
+    maxLineLength: 88
+    pycodestyleErrorsToWarnings: true
+  "linter-pycodestyle":
+    ignoreErrorCodes: [
+      "E501"
+    ]
+    maxLineLength: 88
+  "linter-pylint": {}
+  "linter-ui-default":
+    panelHeight: 102
+  "linter-write-good": {}
+  "markdown-preview-plus":
+    useGitHubStyle: true
+  "markdown-writer":
+    fileExtension: ".md"
+    tableAlignment: "right"
+    tableExtraPipes: true
+  minimap:
+    absoluteMode: true
+    displayMinimapOnLeft: true
+    plugins:
+      cursorline: true
+      cursorlineDecorationsZIndex: 0
+      "git-diff": true
+      "git-diffDecorationsZIndex": 0
+      "highlight-selected": true
+      "highlight-selectedDecorationsZIndex": 0
+      linter: true
+      linterDecorationsZIndex: 0
+  "python-black":
+    skipNumericUnderscoreNormalization: false
+    skipStringNormalization: false
+  "seti-icons":
+    noColor: true
+  "seti-ui":
+    compactView: true
+    disableAnimations: true
+    themeColor: "Pink"
+  "status-bar": {}
+  "vim-mode-plus":
+    keymapYToYankToLastCharacterOfLine: true
+    statusBarModeStringStyle: "long"
+  welcome:
+    showOnStartup: false

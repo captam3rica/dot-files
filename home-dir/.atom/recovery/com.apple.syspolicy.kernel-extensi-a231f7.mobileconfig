@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>PayloadContent</key>
+			<dict>
+				<key>com.apple.syspolicy.kernel-extension-policy</key>
+				<dict>
+					<key>Forced</key>
+					<array>
+						<dict>
+							<key>mcx_preference_settings</key>
+							<dict>
+								<key>AllowUserOverrides</key>
+								<false/>
+								<key>AllowedKernelExtensions</key>
+								<dict>
+									<key>M683GB7CPW</key>
+									<array>
+										<string>com.box.filesystems.osxfuse</string>
+									</array>
+								</dict>
+								<key>AllowedTeamIdentifiers</key>
+								<array>
+									<string>M683GB7CPW</string>
+								</array>
+							</dict>
+						</dict>
+					</array>
+				</dict>
+			</dict>
+			<key>PayloadEnabled</key>
+			<true/>
+			<key>PayloadIdentifier</key>
+			<string>MCXToProfile.2a4b70c8-c364-4a00-94ab-80020af12ca4.alacarte.customsettings.d8334ac8-40d6-4290-808e-555cd50ba70f</string>
+			<key>PayloadType</key>
+			<string>com.apple.ManagedClient.preferences</string>
+			<key>PayloadUUID</key>
+			<string>d8334ac8-40d6-4290-808e-555cd50ba70f</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>PayloadDescription</key>
+	<string>Included custom settings:
+com.apple.syspolicy.kernel-extension-policy
+
+Git revision: a0e04c60fc</string>
+	<key>PayloadDisplayName</key>
+	<string>Box KEXT</string>
+	<key>PayloadIdentifier</key>
+	<string>/Users/mwilson/Desktop/Configuration_Profiles/com.apple.syspolicy.kernel-extension-policy</string>
+	<key>PayloadOrganization</key>
+	<string></string>
+	<key>PayloadRemovalDisallowed</key>
+	<true/>
+	<key>PayloadScope</key>
+	<string>System</string>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>2a4b70c8-c364-4a00-94ab-80020af12ca4</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>

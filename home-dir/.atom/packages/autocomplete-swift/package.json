@@ -1,0 +1,55 @@
+{
+  "_from": "https://www.atom.io/api/packages/autocomplete-swift/versions/1.0.3/tarball",
+  "_id": "autocomplete-swift@1.0.3",
+  "_inBundle": false,
+  "_integrity": "sha512-EUyeX8/p/lWmUoaTACjVqdYTSnio5ogtLfhYPYuMBzudxthd+MQxYLQvCH1I2mStJE2/C5qhNyRhHiIzLIXFUQ==",
+  "_location": "/autocomplete-swift",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/autocomplete-swift/versions/1.0.3/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/autocomplete-swift/versions/1.0.3/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/autocomplete-swift/versions/1.0.3/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/autocomplete-swift/versions/1.0.3/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/autocomplete-swift/versions/1.0.3/tarball",
+  "_shasum": "3f92fea47ed845d81f2455e841cf0b8a0a91e6c5",
+  "_spec": "https://www.atom.io/api/packages/autocomplete-swift/versions/1.0.3/tarball",
+  "_where": "/private/var/folders/_1/xrqbjjsx69dd124qh9t1b1cc0000gp/T/apm-install-dir-118116-28025-wrawx9.221a",
+  "author": {
+    "name": "steelbrain"
+  },
+  "bugs": {
+    "url": "https://github.com/steelbrain/autocomplete-swift/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "atom-linter": "^4.3.0",
+    "consistent-env": "^1.0.0"
+  },
+  "deprecated": false,
+  "description": "Autocomplete provider for swift",
+  "homepage": "https://github.com/steelbrain/autocomplete-swift#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "autocomplete-swift",
+  "providedServices": {
+    "autocomplete.provider": {
+      "versions": {
+        "2.0.0": "provideAC"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steelbrain/autocomplete-swift.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.3"
+}

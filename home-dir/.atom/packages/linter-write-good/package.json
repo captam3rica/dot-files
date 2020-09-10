@@ -1,0 +1,90 @@
+{
+  "_from": "https://www.atom.io/api/packages/linter-write-good/versions/0.9.3/tarball",
+  "_id": "linter-write-good@0.9.3",
+  "_inBundle": false,
+  "_integrity": "sha512-+9BA4Xm6CC1pfOXT5e0Fbf7Hyq6nY9pB2q02jbXwUhvx6DdFsxAsedKZiHcTphsYFh4+ehWLeBl4QuLftTlpew==",
+  "_location": "/linter-write-good",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/linter-write-good/versions/0.9.3/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/linter-write-good/versions/0.9.3/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/linter-write-good/versions/0.9.3/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/linter-write-good/versions/0.9.3/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/linter-write-good/versions/0.9.3/tarball",
+  "_shasum": "b8b16124f886949648b5ebffd24687ef1c9ab719",
+  "_spec": "https://www.atom.io/api/packages/linter-write-good/versions/0.9.3/tarball",
+  "_where": "/private/var/folders/kl/040bdqhs441dd1dt_99fzppw0000gp/T/apm-install-dir-119925-6690-1iromyr.dr6i",
+  "bugs": {
+    "url": "https://github.com/AtomLinter/linter-write-good/issues"
+  },
+  "bundleDependencies": false,
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "dependencies": {
+    "write-good": "1.0.2",
+    "xregexp": "2.0.0"
+  },
+  "deprecated": false,
+  "description": "Naive linter for English prose for developers who can't write good and wanna learn to do other stuff good too.",
+  "devDependencies": {
+    "@commitlint/cli": "8.2.0",
+    "@commitlint/config-conventional": "8.2.0",
+    "@commitlint/travis-cli": "8.2.0",
+    "@semantic-release/apm-config": "6.0.1",
+    "husky": "3.0.5",
+    "jasmine-fix": "1.3.1",
+    "semantic-release": "15.13.24"
+  },
+  "engines": {
+    "atom": ">=1.9.0 <2.0.0"
+  },
+  "homepage": "https://github.com/AtomLinter/linter-write-good#readme",
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "license": "MIT",
+  "main": "./lib/init",
+  "name": "linter-write-good",
+  "private": true,
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "2.0.0": "provideLinter"
+      }
+    }
+  },
+  "release": {
+    "extends": "@semantic-release/apm-config"
+  },
+  "renovate": {
+    "extends": [
+      "config:base"
+    ],
+    "semanticCommits": true,
+    "rangeStrategy": "pin",
+    "packageRules": [
+      {
+        "packagePatterns": [
+          "^eslint"
+        ],
+        "groupName": "ESLint packages"
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AtomLinter/linter-write-good.git"
+  },
+  "version": "0.9.3"
+}
