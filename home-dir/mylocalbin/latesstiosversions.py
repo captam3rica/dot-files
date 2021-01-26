@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# * encoding utf-8 *
 
 """latestiosversion.py.
 
@@ -7,6 +8,11 @@ A script to pull the latest iOS versions.
 
 #
 #   Host link: http://api.ipsw.me/v2/firmwares.json
+#
+#   UPDATES
+#
+#       - 2020.01.11 - Added iPhone 12 models
+#       - 2020.01.11 - Added relevant year list so that we can pull multiple years
 #
 
 
@@ -17,6 +23,11 @@ URL = "https://api.ipsw.me/v2.1/firmwares.json"
 
 PAYLOAD = {}
 HEADERS = {}
+
+RELEVENT_YEARS = [
+    "2020",
+    "2021",
+]
 
 IPHONE_MODEL_IDENTIFIERS = [
     "iPhone10,1",
@@ -32,6 +43,10 @@ IPHONE_MODEL_IDENTIFIERS = [
     "iPhone12,1",
     "iPhone12,3",
     "iPhone12,5",
+    "iPhone13,1",
+    "iPhone13,2",
+    "iPhone13,3",
+    "iPhone13,4",
 ]
 
 
@@ -77,7 +92,7 @@ def get_information_about_relevant_iphone_models(iphone_models, identifiers_list
     return relevant_iphone_models
 
 
-def get_relevant_iphone_firmware_version(relevant_iphone_models):
+def get_relevant_iphone_firmware_version(relevant_iphone_models, year):
     """Return iPhone firmware information
     Returns firmware versions for the iPhones in the relevant list.
     """
@@ -93,7 +108,7 @@ def get_relevant_iphone_firmware_version(relevant_iphone_models):
             release_date = firmware["releasedate"].split("T")[0]
             upload_date = firmware["uploaddate"].split("T")[0]
 
-            if "2020" in upload_date:
+            if year in upload_date:
                 # print(f"{name}: iOS {version}: {date}")
                 # relevant_firmware_versions.append(f"{name}, iOS {version}, {data}")
                 goods = f"{name}, iOS {version}, Uploaded: {upload_date}, Released: {release_date}"
@@ -106,15 +121,29 @@ def main():
     """Run the main logic"""
 
     ipsw_me_data = get_ipsw_me_data(URL)
+
+    # Get all device models from IPSW.me
     all_device_models = get_all_device_models(ipsw_me_data)
+
+    # Parse all iPhone models out of all_device_models
     all_iphone_models = get_all_iphone_models(models=all_device_models)
+
+    # Out of all_iphone_models only return the relevent ones that we want.
     relevant_iphone_models = get_information_about_relevant_iphone_models(
         iphone_models=all_iphone_models, identifiers_list=IPHONE_MODEL_IDENTIFIERS
     )
-    firmware_versions = get_relevant_iphone_firmware_version(relevant_iphone_models)
 
-    for iphone in firmware_versions:
-        print(iphone)
+    # Try to loop though the years that we care about
+    for year in RELEVENT_YEARS:
+
+        print(f"---{year}---")
+
+        firmware_versions = get_relevant_iphone_firmware_version(
+            relevant_iphone_models, year
+        )
+
+        for iphone in firmware_versions:
+            print(iphone)
 
 
 if __name__ == "__main__":
