@@ -40,7 +40,7 @@ PYTHON_VERSION="3.8.1"
 SCRIPT_DIR=$(/usr/bin/dirname "$0")
 
 # The present working directory
-HERE="$(pwd)"
+HERE="$(/usr/bin/dirname $0)"
 
 # Script name
 SCRIPT_NAME="$(/usr/bin/basename $0)"
@@ -49,7 +49,6 @@ SCRIPT_NAME="$(/usr/bin/basename $0)"
 
 declare -a HOMEBREW_APPS
 declare -a GIT_REPOS
-
 
 HOMEBREW_APPS=(
     audacious
@@ -91,7 +90,9 @@ HOMEBREW_APPS=(
     readline
     signal
     shellcheck
+    shfmt
     speedtest-cli
+    spotify
     sqlite3
     suspicious-package
     synergy
@@ -101,24 +102,23 @@ HOMEBREW_APPS=(
     wireshark
     vfuse
     vim
+    vmware-fusion
     xz
     zlib
     zoom
 )
 
 GIT_REPOS=(
-    https://github.com/dracula/macdown.git  # ~/Library/Application\ Support/MacDown/Themes
+    https://github.com/dracula/macdown.git      # ~/Library/Application\ Support/MacDown/Themes
     https://github.com/dracula/terminal-app.git # Dracula Terminal.app theme
     https://github.com/munki/munki-pkg.git
     https://github.com/ryangball/launchd-package-creator/releases
     https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 )
 
-
 #######################################################################################
 ################################ FUNCTIONS ############################################
 #######################################################################################
-
 
 logging() {
     # Pe-pend text and print to standard output
@@ -141,23 +141,13 @@ logging() {
     fi
 
     DATE=$(date +"[%b %d, %Y %Z %T $log_level]:")
-    printf "%s %s\n" "$DATE" "$log_statement" >> "$LOG_PATH"
+    printf "%s %s\n" "$DATE" "$log_statement" >>"$LOG_PATH"
 }
 
-
-#######################################################################################
-################################ MAIN LOGIC ###########################################
-#######################################################################################
-
-main() {
-    # Do main logic
-    ####################################################################################
-    # Rossetta 2 compatibility for M1 Apple silicon Macs
-    ####################################################################################
-    # Check to see if we are running on an ARM based Mac (M1) so that we can install
-    # rossetta 2 if needed.
-
-    arch=$(/usr/bin/arch)
+rosetta_2_check() {
+    # Check for Apple Silicon Macs and install rosetta2 if necessary
+    # credit: Graham Gilbert
+    arch="$(/usr/bin/arch)"
 
     if [ "$arch" == "arm64" ]; then
         logging "info" "Installing rosetta2 for Intel compatibility on Apple Silicon ..."
@@ -165,6 +155,23 @@ main() {
     else
         logging "info" "This is an Intel-based Mac ..."
     fi
+}
+
+#######################################################################################
+################################ MAIN LOGIC ###########################################
+#######################################################################################
+
+main() {
+    # Do main logic
+
+    logging "info" ""
+    logging "info" "Starting initial Mac setup script"
+    logging "info" ""
+    logging "info" "Script Version: $VERSION"
+    logging "info" ""
+
+    # Are we on Apple Silicon
+    rosetta_2_check
 
     ####################################################################################
     # INSTALL XCODE COMMAND LINE TOOLS
@@ -192,6 +199,8 @@ main() {
     logging "info" "Downloading and installing Homebrew ..."
     # Download and install
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+    /bin/sleep 30
 
     ####################################################################################
     # FINDER
@@ -239,7 +248,6 @@ main() {
     # DOCK & DASHBOARD
     ####################################################################################
 
-
     ####################################################################################
     # TERMINAL
     ####################################################################################
@@ -274,7 +282,7 @@ main() {
 
     logging "info" "Starting app installation from Homebrew ..."
 
-    for (( i = 1; i <= ${#HOMEBREW_APPS[@]}; i++ )); do
+    for ((i = 1; i <= ${#HOMEBREW_APPS[@]}; i++)); do
 
         local app="${HOMEBREW_APPS[$i]}"
 
@@ -282,7 +290,7 @@ main() {
         # Install all the home brew apps
         /usr/local/bin/brew install "$app"
 
-        if [[ "$?" -ne 0 ]]; then
+        if [[ $? -ne 0 ]]; then
             # Try installing with cask because app not available from brew directly
             logging "info" "Unable to install $app from brew install ..."
             logging "info" "Trying brew cask install $app ..."
@@ -343,7 +351,7 @@ main() {
 
     # pyenv-virtualenv
     eval "$(pyenv virtualenv-init -)"
-    ' >> ~/.zshrc
+    ' >~/.zshrc
 
     # Reset the current Terminal session to pickup the new settings
     source ~/.zshrc
@@ -366,9 +374,16 @@ main() {
     logging "info" "Installing python modules ..."
     pip install requests toml black isort pathlib pylint xlrd
 
+    logging "info" "Upgrading pip ..."
+    pip install --upgrade pip
+
     ####################################################################################
     # CLEANUP
     ####################################################################################
+
+    logging "info" ""
+    logging "info" "Initial Mac setup complete ..."
+    logging "info" ""
 }
 
 # Call main
