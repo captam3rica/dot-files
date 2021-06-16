@@ -1,5 +1,7 @@
 " Make sure to have Vundle installed from GitHub before starting any of the
 " configs below.
+" https://github.com/VundleVim/Vundle.vim#quick-start
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 set nocompatible              " be iMproved, required
 " let isVundleInstalled=1
